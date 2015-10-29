@@ -1,18 +1,19 @@
 'use strict';
 
-var READABILITY_API_KEY = process.env.READABILITY_API_KEY || (
-  fs.existsSync(path.join(os.homedir(), '.ssh/api-keys.json')) &&
-  fs.readFileSync(path.join(os.homedir(), '.ssh/api-keys.json'))
-);
-
 var _ = require('lodash');
 var b = require('bluebird');
 var fs = require('fs');
+
 var os = require('os');
 var url = require('url');
 var path = require('path');
 var cheerio = require('cheerio');
 var request = require('request');
+
+var READABILITY_API_KEY = process.env.READABILITY_API_KEY || (
+  fs.existsSync(path.join(os.homedir(), '.ssh/api-keys.json')) &&
+  fs.readFileSync(path.join(os.homedir(), '.ssh/api-keys.json'))
+);
 
 var dictionaries = require('./dictionaries');
 var tokenizers = require('./tokenizers');
